@@ -1105,7 +1105,7 @@ export async function searchSpoon() {
         for (let i = 0; i &lt; allRecipes.length; i++) {
             allRecipes[i].style.display = "none"; 
         }
-        const API_KEY = "6b76530c7782467a8b83f2ad7ab1e35f";
+        const API_KEY = "b7855be92a904131a1fc088d0e40c138";
         const SEARCH_URL = `https://api.spoonacular.com/recipes/complexSearch?query=${filter}&amp;number=10&amp;apiKey=${API_KEY}`;
         fetch (SEARCH_URL)
             .then(response => response.json())
@@ -1417,7 +1417,12 @@ export async function searchSpoon() {
  Adds new input for tags</a></li><li><a href="global.html#bindRecipeCardAddsaneventlistenertoeachrecipecardwhich,whenclicked,setstheexpandrecipepagetotherecipecard'sdataandnavigatestosaidrecipepage.">bindRecipeCard
  Adds an event listener to each recipe card which, when
  clicked, sets the expand recipe page to the recipe card's
- data and navigates to said recipe page.</a></li><li><a href="global.html#createRecipeButton">createRecipeButton</a></li><li><a href="global.html#filterTagsChecksthetaglistofeachexistingrecipecard.Ifthefiltertagisnotinarecipe'staglist,thatrecipegetshidden.Ifthefilterisbeingturnedoff,thencheckthelistoftagsstillbeingfilteredforagainsteachrecipe'staglist.Ifthereisnointersection,displaytherecipe">filterTags 
+ data and navigates to said recipe page.</a></li><li><a href="global.html#cancelDeleteHelperfunctionthatcancelsthedeletionofarecipefromit'sexpandpage">cancelDelete
+ Helper function that cancels the deletion of a recipe from it's expand page</a></li><li><a href="global.html#changeViewFunctionthathandlesmostofthenavigationthroughtheapp.Giventhepagetobenavigatedto,showsonlytheelementsthataresupposedtoappearonthatpage.">changeView
+ Function that handles most of the navigation through the app. Given
+ the page to be navigated to, shows only the elements that are supposed
+ to appear on that page.</a></li><li><a href="global.html#confirmDeleteHelperfunctionthatdeletesarecipefromit'sexpandpage">confirmDelete 
+ Helper function that deletes a recipe from it's expand page</a></li><li><a href="global.html#createRecipeButton">createRecipeButton</a></li><li><a href="global.html#filterTagsChecksthetaglistofeachexistingrecipecard.Ifthefiltertagisnotinarecipe'staglist,thatrecipegetshidden.Ifthefilterisbeingturnedoff,thencheckthelistoftagsstillbeingfilteredforagainsteachrecipe'staglist.Ifthereisnointersection,displaytherecipe">filterTags 
  Checks the tag list of each existing recipe card. If the filter tag is not in a recipe's tag list,
  that recipe gets hidden. If the filter is being turned off, then check the list of tags still being
  filtered for against each recipe's tag list. If there is no intersection, display the recipe</a></li><li><a href="global.html#handleImageUploadConvertsimagetodataUrltopreviewit">handleImageUpload
@@ -1431,7 +1436,9 @@ export async function searchSpoon() {
  Checks to see if a recipe exists in local storage
  by checking the name</a></li><li><a href="global.html#refreshRemovesrecipesandshows15otherrandomrecipes">refresh
  Removes recipes and shows 15 other random recipes</a></li><li><a href="global.html#resetClearsinputfieldsaftersaving">reset
- Clears input fields after saving</a></li><li><a href="global.html#saveBaseSavesdataininputfieldstolocalstorageResetstheinputfieldvaluesChangesscreentoexpandedrecipepageofsavedrecipe">saveBase
+ Clears input fields after saving</a></li><li><a href="global.html#returnToHomePageHelperfunctionthatwillnavigatetheusertothecorrectpagewhenthebackbuttonispressed">returnToHomePage
+ Helper function that will navigate the user to the correct page
+ when the back button is pressed</a></li><li><a href="global.html#saveBaseSavesdataininputfieldstolocalstorageResetstheinputfieldvaluesChangesscreentoexpandedrecipepageofsavedrecipe">saveBase
  Saves data in input fields to local storage
  Resets the input field values
  Changes screen to expanded recipe page of saved recipe</a></li><li><a href="global.html#saveDataCreateChecktomakesureinputfieldsarevalidorifrecipealreadyexistsIfitdoesn'tChangesscreentoexpandedrecipepageofsavedrecipe">saveDataCreate
@@ -1444,13 +1451,19 @@ export async function searchSpoon() {
  Saves recipes from the explore page to my recipes
  Allows you to edit the recipe before you save</a></li><li><a href="global.html#searchRecipeFunctiontosearchforrecipecardsinsearchbar">searchRecipe
  Function to search for recipe cards in search bar</a></li><li><a href="global.html#searchSpoonFunctiontosearchforrecipesinSpoonacular">searchSpoon
- Function to search for recipes in Spoonacular</a></li></ul>
+ Function to search for recipes in Spoonacular</a></li><li><a href="global.html#showDeleteButtonsHelperfunctionthatshowstherecipecarddeletebuttonswhentheMyRecipestrashbuttonisclicked">showDeleteButtons 
+ Helper function that shows the recipe card delete buttons
+ when the My Recipes trash button is clicked</a></li><li><a href="global.html#showTagsTriggerswhenthefilterbuttonnexttothesearchbarisclicked.Showsallexistingtagsthat,whenclicked,willfilterrecipesbasedonthattag.">showTags
+ Triggers when the filter button next to the search bar is clicked.
+ Shows all existing tags that, when clicked, will filter recipes based
+ on that tag.</a></li><li><a href="global.html#switchHighlightSwitchestheunderlineindicatortowhateverpagewasnavigatedto">switchHighlight
+ Switches the underline indicator to whatever page was navigated to</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Fri Dec 10 2021 11:47:11 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Fri Dec 10 2021 18:55:51 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>

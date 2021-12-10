@@ -35,6 +35,7 @@ let createRecipeButton = document.getElementById("create-recipe-btn");
 createRecipeButton.addEventListener("click", () => {
   changeView("Create Recipe");
 });
+
 let myRecipesButton = document.getElementById("my-recipes-btn");
 myRecipesButton.addEventListener("click", (e) => {
   changeView(e);
@@ -43,6 +44,7 @@ let favoriteButton = document.getElementById("my-fav-btn");
 favoriteButton.addEventListener("click", (e) =>{
   changeView(e);
 });
+
 let exploreButton = document.getElementById("explore-btn");
 exploreButton.addEventListener("click", (e) => {
   changeView(e);
@@ -74,10 +76,16 @@ recipeSearch.addEventListener("keyup", () => {
   searchRecipe();
 });
 
-let exploreCheck = 0;
+// Keeps track of the first time the explore page is visited
+let exploreCheck = false;
 
-/*
- * Function to switch pages
+/**
+ * @method changeView
+ *  Function that handles most of the navigation through the app. Given
+ *  the page to be navigated to, shows only the elements that are supposed
+ *  to appear on that page.
+ * 
+ * @param {string} e - The page to be navigated to
  */
 export function changeView(e) {
   // reference for needed elements
@@ -168,9 +176,9 @@ export function changeView(e) {
     editButton.style.display = "none";
     cookModeBut.className = "hidden";
     refreshButton.className = "";
-    if(exploreCheck === 0) {
+    if(exploreCheck === false) {
       refresh();
-      exploreCheck++;
+      exploreCheck = true;
     }
     returnButton.className = "hidden";
   }
@@ -229,8 +237,11 @@ export function switchButtonView(but) {
 }
 
 
-/*
- * Function to change button highlight
+/**
+ * @method switchHighlight
+ *  Switches the underline indicator to whatever page was navigated to
+ * 
+ * @param {string} innerText - The page being navigated to
  */
 function switchHighlight(innerText) {
   let nav = document.querySelector(".navbar-nav");
@@ -258,7 +269,7 @@ function switchHighlight(innerText) {
  * Function to fetch recipes from spoonacular and populate explore page
  */
 async function fetchApiRecipes() {
-  const API_KEY = "6b76530c7782467a8b83f2ad7ab1e35f";
+  const API_KEY = "b7855be92a904131a1fc088d0e40c138";
   const response = await fetch(
     `https://api.spoonacular.com/recipes/random?number=15&amp;apiKey=${API_KEY}`
   );
@@ -267,8 +278,6 @@ async function fetchApiRecipes() {
   let data = await response.json();
 
   saveToMyRecipes(data, API_KEY);
-
-  
 }
 
 /**
@@ -280,7 +289,11 @@ function refresh() {
   fetchApiRecipes();
 }
 
-// Function for return to home page
+/**
+ * @method returnToHomePage
+ *  Helper function that will navigate the user to the correct page
+ *  when the back button is pressed 
+ */
 window.returnToHomePage = function () {
   const returnBut = document.getElementById("return-btn");
   if(returnBut.classList.contains("explore")){
@@ -298,9 +311,15 @@ window.returnToHomePage = function () {
   }
 };
 
-// Show tags when pressing filter button
+/**
+ * @method showTags
+ *  Triggers when the filter button next to the search bar is clicked.
+ *  Shows all existing tags that, when clicked, will filter recipes based
+ *  on that tag.
+ */
 window.showTags = function () {
   let filterBtn = document.getElementById("filter-btn");
+  // If the filter button is active, turn it green. If it's not, turn it white
   if(filterBtn.classList.contains("flag")) {
     filterBtn.style.backgroundColor = "rgba(148, 193, 30, 1)";
     filterBtn.classList.remove("flag");
@@ -308,6 +327,7 @@ window.showTags = function () {
     filterBtn.style.backgroundColor = "white";
     filterBtn.classList.add("flag");
   }
+  // Gets a list of all tags
   let tags = [];
   for (let i = 0; i &lt; localStorage.length; i++) {
     const currentTags = JSON.parse(
@@ -327,6 +347,8 @@ window.showTags = function () {
     filterBtn.classList.remove("filter-on");
     filterBtn.classList.add("filter-off");
   }
+  // Creates a new button for each tag, that when clicked will filter recipes 
+  // based on that tag
   else {
   tags.forEach((element, i) => {
     filterBtn.classList.remove("filter-off");
@@ -352,7 +374,11 @@ window.showTags = function () {
   }  
 };
 
-// Show delete buttons for each card when click delete on home page
+/**
+ * @method showDeleteButtons 
+ *  Helper function that shows the recipe card delete buttons
+ *  when the My Recipes trash button is clicked
+ */
 window.showDeleteButtons = function () {
   const expandSection = document.querySelector(".section--recipe-expand");
   if (expandSection.classList.contains("shown")) {
@@ -382,11 +408,19 @@ window.showDeleteButtons = function () {
   }
 };
 
+/**
+ * @method cancelDelete
+ *  Helper function that cancels the deletion of a recipe from it's expand page
+ */
 window.cancelDelete = function () {
   const expandModal = document.querySelector(".delete-modal-expand");
   expandModal.classList.add("hidden");
 };
 
+/**
+ * @method confirmDelete 
+ *  Helper function that deletes a recipe from it's expand page
+ */
 window.confirmDelete = function () {
   const expandRecipe = document.getElementsByTagName("recipe-expand");
   const curCardId =
@@ -414,7 +448,12 @@ window.confirmDelete = function () {
  Adds new input for tags</a></li><li><a href="global.html#bindRecipeCardAddsaneventlistenertoeachrecipecardwhich,whenclicked,setstheexpandrecipepagetotherecipecard'sdataandnavigatestosaidrecipepage.">bindRecipeCard
  Adds an event listener to each recipe card which, when
  clicked, sets the expand recipe page to the recipe card's
- data and navigates to said recipe page.</a></li><li><a href="global.html#createRecipeButton">createRecipeButton</a></li><li><a href="global.html#filterTagsChecksthetaglistofeachexistingrecipecard.Ifthefiltertagisnotinarecipe'staglist,thatrecipegetshidden.Ifthefilterisbeingturnedoff,thencheckthelistoftagsstillbeingfilteredforagainsteachrecipe'staglist.Ifthereisnointersection,displaytherecipe">filterTags 
+ data and navigates to said recipe page.</a></li><li><a href="global.html#cancelDeleteHelperfunctionthatcancelsthedeletionofarecipefromit'sexpandpage">cancelDelete
+ Helper function that cancels the deletion of a recipe from it's expand page</a></li><li><a href="global.html#changeViewFunctionthathandlesmostofthenavigationthroughtheapp.Giventhepagetobenavigatedto,showsonlytheelementsthataresupposedtoappearonthatpage.">changeView
+ Function that handles most of the navigation through the app. Given
+ the page to be navigated to, shows only the elements that are supposed
+ to appear on that page.</a></li><li><a href="global.html#confirmDeleteHelperfunctionthatdeletesarecipefromit'sexpandpage">confirmDelete 
+ Helper function that deletes a recipe from it's expand page</a></li><li><a href="global.html#createRecipeButton">createRecipeButton</a></li><li><a href="global.html#filterTagsChecksthetaglistofeachexistingrecipecard.Ifthefiltertagisnotinarecipe'staglist,thatrecipegetshidden.Ifthefilterisbeingturnedoff,thencheckthelistoftagsstillbeingfilteredforagainsteachrecipe'staglist.Ifthereisnointersection,displaytherecipe">filterTags 
  Checks the tag list of each existing recipe card. If the filter tag is not in a recipe's tag list,
  that recipe gets hidden. If the filter is being turned off, then check the list of tags still being
  filtered for against each recipe's tag list. If there is no intersection, display the recipe</a></li><li><a href="global.html#handleImageUploadConvertsimagetodataUrltopreviewit">handleImageUpload
@@ -428,7 +467,9 @@ window.confirmDelete = function () {
  Checks to see if a recipe exists in local storage
  by checking the name</a></li><li><a href="global.html#refreshRemovesrecipesandshows15otherrandomrecipes">refresh
  Removes recipes and shows 15 other random recipes</a></li><li><a href="global.html#resetClearsinputfieldsaftersaving">reset
- Clears input fields after saving</a></li><li><a href="global.html#saveBaseSavesdataininputfieldstolocalstorageResetstheinputfieldvaluesChangesscreentoexpandedrecipepageofsavedrecipe">saveBase
+ Clears input fields after saving</a></li><li><a href="global.html#returnToHomePageHelperfunctionthatwillnavigatetheusertothecorrectpagewhenthebackbuttonispressed">returnToHomePage
+ Helper function that will navigate the user to the correct page
+ when the back button is pressed</a></li><li><a href="global.html#saveBaseSavesdataininputfieldstolocalstorageResetstheinputfieldvaluesChangesscreentoexpandedrecipepageofsavedrecipe">saveBase
  Saves data in input fields to local storage
  Resets the input field values
  Changes screen to expanded recipe page of saved recipe</a></li><li><a href="global.html#saveDataCreateChecktomakesureinputfieldsarevalidorifrecipealreadyexistsIfitdoesn'tChangesscreentoexpandedrecipepageofsavedrecipe">saveDataCreate
@@ -441,13 +482,19 @@ window.confirmDelete = function () {
  Saves recipes from the explore page to my recipes
  Allows you to edit the recipe before you save</a></li><li><a href="global.html#searchRecipeFunctiontosearchforrecipecardsinsearchbar">searchRecipe
  Function to search for recipe cards in search bar</a></li><li><a href="global.html#searchSpoonFunctiontosearchforrecipesinSpoonacular">searchSpoon
- Function to search for recipes in Spoonacular</a></li></ul>
+ Function to search for recipes in Spoonacular</a></li><li><a href="global.html#showDeleteButtonsHelperfunctionthatshowstherecipecarddeletebuttonswhentheMyRecipestrashbuttonisclicked">showDeleteButtons 
+ Helper function that shows the recipe card delete buttons
+ when the My Recipes trash button is clicked</a></li><li><a href="global.html#showTagsTriggerswhenthefilterbuttonnexttothesearchbarisclicked.Showsallexistingtagsthat,whenclicked,willfilterrecipesbasedonthattag.">showTags
+ Triggers when the filter button next to the search bar is clicked.
+ Shows all existing tags that, when clicked, will filter recipes based
+ on that tag.</a></li><li><a href="global.html#switchHighlightSwitchestheunderlineindicatortowhateverpagewasnavigatedto">switchHighlight
+ Switches the underline indicator to whatever page was navigated to</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Fri Dec 10 2021 11:47:11 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Fri Dec 10 2021 18:55:51 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: cook-mode.js</title>
+    <title>JSDoc: Source: components/cook-mode.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: cook-mode.js</h1>
+    <h1 class="page-title">Source: components/cook-mode.js</h1>
 
     
 
@@ -539,12 +539,58 @@ customElements.define("cook-mode", CookMode);
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#dataSet'sthecontentforthecook-modepageusingtheinputdata">data
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addNewIngredientAddslabelandnewinputfieldforingredients">addNewIngredient
+ Adds label and new input field for ingredients</a></li><li><a href="global.html#addNewStepAddslabelandnewinputfieldforsteps">addNewStep
+ Adds label and new input field for steps</a></li><li><a href="global.html#addNewTagAddsnewinputfortags">addNewTag
+ Adds new input for tags</a></li><li><a href="global.html#bindRecipeCardAddsaneventlistenertoeachrecipecardwhich,whenclicked,setstheexpandrecipepagetotherecipecard'sdataandnavigatestosaidrecipepage.">bindRecipeCard
+ Adds an event listener to each recipe card which, when
+ clicked, sets the expand recipe page to the recipe card's
+ data and navigates to said recipe page.</a></li><li><a href="global.html#cancelDeleteHelperfunctionthatcancelsthedeletionofarecipefromit'sexpandpage">cancelDelete
+ Helper function that cancels the deletion of a recipe from it's expand page</a></li><li><a href="global.html#changeViewFunctionthathandlesmostofthenavigationthroughtheapp.Giventhepagetobenavigatedto,showsonlytheelementsthataresupposedtoappearonthatpage.">changeView
+ Function that handles most of the navigation through the app. Given
+ the page to be navigated to, shows only the elements that are supposed
+ to appear on that page.</a></li><li><a href="global.html#confirmDeleteHelperfunctionthatdeletesarecipefromit'sexpandpage">confirmDelete 
+ Helper function that deletes a recipe from it's expand page</a></li><li><a href="global.html#createRecipeButton">createRecipeButton</a></li><li><a href="global.html#dataSet'sthecontentforthecook-modepageusingtheinputdata">data
  Set's the content for the cook-mode page using the input data</a></li><li><a href="global.html#dataSetsthedatafortherecipethatwillbeputinsidethe%253Crecipe-expand%253Eelement.Overwritesthepreviouslyexpandedrecipe.">data 
  Sets the data for the recipe that will be put inside the <recipe-expand> element.
- Overwrites the previously expanded recipe.</a></li><li><a href="global.html#setVoiceAttachesaTTSbuttontoeachstepcardthat,whenclicked,willreadoutthetextforthatstep.">setVoice
+ Overwrites the previously expanded recipe.</a></li><li><a href="global.html#filterTagsChecksthetaglistofeachexistingrecipecard.Ifthefiltertagisnotinarecipe'staglist,thatrecipegetshidden.Ifthefilterisbeingturnedoff,thencheckthelistoftagsstillbeingfilteredforagainsteachrecipe'staglist.Ifthereisnointersection,displaytherecipe">filterTags 
+ Checks the tag list of each existing recipe card. If the filter tag is not in a recipe's tag list,
+ that recipe gets hidden. If the filter is being turned off, then check the list of tags still being
+ filtered for against each recipe's tag list. If there is no intersection, display the recipe</a></li><li><a href="global.html#handleImageUploadConvertsimagetodataUrltopreviewit">handleImageUpload
+ Converts image to dataUrl to preview it</a></li><li><a href="global.html#imageUpload">imageUpload</a></li><li><a href="global.html#initCardsWhenpageisreloaded/refreshed,createsanewrecipecardforeachrecipeinlocalStorageandbindstheexpandedrecipepagetoit">initCards
+ When page is reloaded/refreshed, creates a new recipe card
+ for each recipe in localStorage and binds the expanded
+ recipe page to it</a></li><li><a href="global.html#navEditCreateseditrecipepagethatcontainsdataforarecipeintheinputs">navEdit
+ Creates edit recipe page that contains data for a recipe in the inputs</a></li><li><a href="global.html#newCardIfpassedrecipeexistsinlocalStorage,createsanewrecipecardwiththeexpandedrecipepageboundtoit.">newCard
+ If passed recipe exists in localStorage, creates a new recipe
+ card with the expanded recipe page bound to it.</a></li><li><a href="global.html#recipeExistsCheckstoseeifarecipeexistsinlocalstoragebycheckingthename">recipeExists
+ Checks to see if a recipe exists in local storage
+ by checking the name</a></li><li><a href="global.html#refreshRemovesrecipesandshows15otherrandomrecipes">refresh
+ Removes recipes and shows 15 other random recipes</a></li><li><a href="global.html#resetClearsinputfieldsaftersaving">reset
+ Clears input fields after saving</a></li><li><a href="global.html#returnToHomePageHelperfunctionthatwillnavigatetheusertothecorrectpagewhenthebackbuttonispressed">returnToHomePage
+ Helper function that will navigate the user to the correct page
+ when the back button is pressed</a></li><li><a href="global.html#saveBaseSavesdataininputfieldstolocalstorageResetstheinputfieldvaluesChangesscreentoexpandedrecipepageofsavedrecipe">saveBase
+ Saves data in input fields to local storage
+ Resets the input field values
+ Changes screen to expanded recipe page of saved recipe</a></li><li><a href="global.html#saveDataCreateChecktomakesureinputfieldsarevalidorifrecipealreadyexistsIfitdoesn'tChangesscreentoexpandedrecipepageofsavedrecipe">saveDataCreate
+ Check to make sure input fields are valid or if recipe already exists
+ If it doesn't
+ Changes screen to expanded recipe page of saved recipe</a></li><li><a href="global.html#saveDataEditSavesediteddataininputfieldstolocalstorageanddeletesoldrecipeResetstheinputfieldvaluesChangesscreentoexpandedrecipepageofsavedrecipe">saveDataEdit
+ Saves edited data in input fields to local storage and deletes old recipe
+ Resets the input field values
+ Changes screen to expanded recipe page of saved recipe</a></li><li><a href="global.html#saveToMyRecipesSavesrecipesfromtheexplorepagetomyrecipesAllowsyoutoedittherecipebeforeyousave">saveToMyRecipes
+ Saves recipes from the explore page to my recipes
+ Allows you to edit the recipe before you save</a></li><li><a href="global.html#searchRecipeFunctiontosearchforrecipecardsinsearchbar">searchRecipe
+ Function to search for recipe cards in search bar</a></li><li><a href="global.html#searchSpoonFunctiontosearchforrecipesinSpoonacular">searchSpoon
+ Function to search for recipes in Spoonacular</a></li><li><a href="global.html#setVoiceAttachesaTTSbuttontoeachstepcardthat,whenclicked,willreadoutthetextforthatstep.">setVoice
  Attaches a TTS button to each step card that, when clicked, will read out the
- text for that step.</a></li><li><a href="global.html#timerStartsacountdowntimerwithuserinput.Itdoesthisby,foreachinterval,convertingalltimefieldstoseconds,subtractingone,andthenconvertingbackintohours/minutes/seconds">timer 
+ text for that step.</a></li><li><a href="global.html#showDeleteButtonsHelperfunctionthatshowstherecipecarddeletebuttonswhentheMyRecipestrashbuttonisclicked">showDeleteButtons 
+ Helper function that shows the recipe card delete buttons
+ when the My Recipes trash button is clicked</a></li><li><a href="global.html#showTagsTriggerswhenthefilterbuttonnexttothesearchbarisclicked.Showsallexistingtagsthat,whenclicked,willfilterrecipesbasedonthattag.">showTags
+ Triggers when the filter button next to the search bar is clicked.
+ Shows all existing tags that, when clicked, will filter recipes based
+ on that tag.</a></li><li><a href="global.html#switchHighlightSwitchestheunderlineindicatortowhateverpagewasnavigatedto">switchHighlight
+ Switches the underline indicator to whatever page was navigated to</a></li><li><a href="global.html#timerStartsacountdowntimerwithuserinput.Itdoesthisby,foreachinterval,convertingalltimefieldstoseconds,subtractingone,andthenconvertingbackintohours/minutes/seconds">timer 
  Starts a countdown timer with user input. It does this by, for each interval, converting all 
  time fields to seconds, subtracting one, and then converting back into hours/minutes/seconds</a></li></ul>
 </nav>
@@ -552,7 +598,7 @@ customElements.define("cook-mode", CookMode);
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Fri Dec 10 2021 19:13:23 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Fri Dec 10 2021 19:24:47 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>
